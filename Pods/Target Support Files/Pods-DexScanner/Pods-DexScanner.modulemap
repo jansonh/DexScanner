@@ -1,0 +1,6 @@
+module Pods_DexScanner {
+  umbrella header "Pods-DexScanner-umbrella.h"
+
+  export *
+  module * { export * }
+}

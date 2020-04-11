@@ -1,0 +1,26 @@
+PODS:
+  - CameraManager (5.1.0)
+  - Realm (4.4.0):
+    - Realm/Headers (= 4.4.0)
+  - Realm/Headers (4.4.0)
+  - RealmSwift (4.4.0):
+    - Realm (= 4.4.0)
+
+DEPENDENCIES:
+  - CameraManager (~> 5.1)
+  - RealmSwift
+
+SPEC REPOS:
+  trunk:
+    - CameraManager
+    - Realm
+    - RealmSwift
+
+SPEC CHECKSUMS:
+  CameraManager: aa1386552b3c0a643225a8b7d98703d45d909ff2
+  Realm: e125f464884cda953ebefe70c671b75b03b81b9b
+  RealmSwift: 33656a42bd300959a081fc13347376bc478071af
+
+PODFILE CHECKSUM: afb19a92e71eb9e7e54bb9be6476bb0894cdffc1
+
+COCOAPODS: 1.9.1

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6GM-pR-xBP">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera View-->
+        <scene sceneID="TNb-z0-V3w">
+            <objects>
+                <viewController id="Z2Y-ng-sB3" userLabel="Camera View" customClass="ViewController" customModule="DexScanner" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7W3-jG-IQG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5Z-tv-BFY" userLabel="Camera View">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="gxb-6N-Zvx">
+                                <rect key="frame" x="310" y="98" width="79" height="34"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dio-kC-2nH" userLabel="Info Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="34"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="info.circle.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40t-RW-p3d" userLabel="Help Button">
+                                        <rect key="frame" x="44" y="0.0" width="35" height="34"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="questionmark.circle" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qw1-wM-3Bj" userLabel="Shoot Button">
+                                <rect key="frame" x="177.5" y="789" width="59" height="57"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="camera.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50" scale="default" weight="regular"/>
+                                </state>
+                                <connections>
+                                    <action selector="shootButtonPressed:" destination="Z2Y-ng-sB3" eventType="touchUpInside" id="dx2-E4-Ygm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d72-T9-MOm" userLabel="Menu Button">
+                                <rect key="frame" x="25" y="98" width="145" height="36.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="145" id="Jit-26-lgg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title=" DéxScanner" image="equal.square.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35"/>
+                                </state>
+                                <connections>
+                                    <action selector="openDexButtonPressed:" destination="Z2Y-ng-sB3" eventType="touchUpInside" id="R50-Ll-SDT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Qw1-wM-3Bj" firstAttribute="centerX" secondItem="7W3-jG-IQG" secondAttribute="centerX" id="7qb-2O-atv"/>
+                            <constraint firstItem="d72-T9-MOm" firstAttribute="leading" secondItem="7W3-jG-IQG" secondAttribute="leadingMargin" constant="5" id="I4f-fg-qYT"/>
+                            <constraint firstItem="W5Z-tv-BFY" firstAttribute="leading" secondItem="7W3-jG-IQG" secondAttribute="leading" id="Jp3-fz-n3f"/>
+                            <constraint firstItem="W5Z-tv-BFY" firstAttribute="top" secondItem="7W3-jG-IQG" secondAttribute="top" id="Mgf-Oo-NG1"/>
+                            <constraint firstItem="gxb-6N-Zvx" firstAttribute="top" secondItem="lvs-Na-KYc" secondAttribute="top" constant="10" id="P25-dk-s32"/>
+                            <constraint firstItem="W5Z-tv-BFY" firstAttribute="centerY" secondItem="7W3-jG-IQG" secondAttribute="centerY" id="RRA-Av-13i"/>
+                            <constraint firstAttribute="bottom" secondItem="Qw1-wM-3Bj" secondAttribute="bottom" constant="50" id="WUB-O6-FPk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gxb-6N-Zvx" secondAttribute="trailing" constant="5" id="a4f-gq-Obh"/>
+                            <constraint firstAttribute="bottom" secondItem="W5Z-tv-BFY" secondAttribute="bottom" id="bcx-cn-JJv"/>
+                            <constraint firstAttribute="trailing" secondItem="W5Z-tv-BFY" secondAttribute="trailing" id="hdW-Lp-1b6"/>
+                            <constraint firstItem="d72-T9-MOm" firstAttribute="top" secondItem="lvs-Na-KYc" secondAttribute="top" constant="10" id="ooC-X2-Dby"/>
+                            <constraint firstItem="W5Z-tv-BFY" firstAttribute="centerX" secondItem="7W3-jG-IQG" secondAttribute="centerX" id="s2J-ba-v61"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lvs-Na-KYc"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NKa-v4-sMU"/>
+                    <connections>
+                        <outlet property="imagePreview" destination="W5Z-tv-BFY" id="jM6-Hk-cHl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SKh-oA-kOL" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944.92753623188412" y="111.83035714285714"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="F9W-63-rY0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6GM-pR-xBP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tbn-Gr-tEr">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Z2Y-ng-sB3" kind="relationship" relationship="rootViewController" id="27A-K9-Ymm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Sm-6e-eDN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34.782608695652179" y="111.83035714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="camera.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="equal.square.fill" catalog="system" width="128" height="114"/>
+        <image name="info.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
+    </resources>
+</document>
