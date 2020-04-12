@@ -13,4 +13,6 @@ struct K {
         static let CameraToPokedex: String = "CameraToPokedex"
         static let PokedexToPokemon: String = "PokedexToPokemon"
     }
+    
+    static let numberOfPokemonPerRow: Int = 5
 }

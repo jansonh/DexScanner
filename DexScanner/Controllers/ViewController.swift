@@ -106,6 +106,11 @@ class ViewController: UIViewController {
     @IBAction func openDexButtonPressed(_ sender: UIButton) {
         // Navigate to SwiftUI view by setting the rootView of a UIHostingController
         let pokedexView = PokedexView()
+        
+        // Experimental. Use a collection view layout for the Pokédex. Still error.
+        // Uncomment the code below and comment the pokedexView above.
+        // let pokedexView = PokedexCollectionView()
+        
         let hostVC = UIHostingController(rootView: pokedexView)
         navigationController?.pushViewController(hostVC, animated: true)
     }

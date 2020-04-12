@@ -11,17 +11,20 @@ import SwiftUI
 struct PokemonView: View {
     
     let pokemon: PokemonModel?
-    
+        
     var body: some View {
         VStack {
             HStack {
                 Text(pokemon!.dexNo).font(.headline)
                 Text(pokemon!.name).font(.title)
             }
-            Image(pokemon!.spriteImagePath).padding()
+            Image(pokemon!.spriteImagePath)
+                .resizable()
+                .frame(width: 150, height: 150)
+                .padding()
             HStack {
                 ForEach(pokemon!.pokemonTypes, id: \.self) { pokemonType in
-                    Text(pokemonType.name.uppercased())
+                    Text(pokemonType.abbrv_name.uppercased())
                         .padding(.all, 10)
                         .background(Color(UIColor(hex: Int(pokemonType.badge_color, radix: 16)!)))
                         .foregroundColor(Color.white)
@@ -32,6 +35,13 @@ struct PokemonView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .padding()
             Spacer()
-        }.padding(.top, 10)
+        }
+        .padding(.top, 10)
+        .onAppear {
+            Speaker.speakUtterance(text: self.pokemon!.dexEntryUtterance)
+        }
+        .onDisappear {
+            Speaker.stopSpeaking()
+        }
     }
 }

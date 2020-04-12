@@ -11,7 +11,7 @@ import RealmSwift
 
 class PokemonType: Object, Decodable {
     @objc dynamic var name: String = "unknown"
-    @objc dynamic var complete_name: String = "unknown"
+    @objc dynamic var abbrv_name: String = "unknown"
     @objc dynamic var badge_color: String = "000000"
     
     override class func primaryKey() -> String? {

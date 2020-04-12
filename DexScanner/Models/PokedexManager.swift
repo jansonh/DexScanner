@@ -10,7 +10,7 @@ import Foundation
 
 class PokedexManager: ObservableObject {
     @Published var pokemon = [PokemonModel]()
-    
+
     let db = DatabaseLoader()
     
     func load() {
