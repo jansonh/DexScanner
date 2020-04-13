@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PokemonModel: Decodable, Identifiable, Hashable {
+struct PokemonModel: Decodable, Identifiable {
     var id: String {
         return dexNo
     }
@@ -27,7 +27,7 @@ struct PokemonModel: Decodable, Identifiable, Hashable {
     }
     
     var dexEntryUtterance: String {
-        var prefix = "\(name), a"
+        var prefix = "\(name), the"
         for pokemonType in pokemonTypes {
             prefix = prefix + " " + pokemonType.name
         }

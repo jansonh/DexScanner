@@ -19,43 +19,43 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="gxb-6N-Zvx">
-                                <rect key="frame" x="310" y="98" width="79" height="34"/>
+                                <rect key="frame" x="286" y="98" width="103" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dio-kC-2nH" userLabel="Info Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="35" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="47" height="45"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="info.circle.fill" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40t-RW-p3d" userLabel="Help Button">
-                                        <rect key="frame" x="44" y="0.0" width="35" height="34"/>
+                                        <rect key="frame" x="56" y="0.0" width="47" height="45"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="questionmark.circle" catalog="system">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
                                         </state>
                                     </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qw1-wM-3Bj" userLabel="Shoot Button">
-                                <rect key="frame" x="177.5" y="789" width="59" height="57"/>
+                                <rect key="frame" x="169" y="772" width="76" height="74"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="camera.circle.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50" scale="default" weight="regular"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="65" scale="default" weight="regular"/>
                                 </state>
                                 <connections>
                                     <action selector="shootButtonPressed:" destination="Z2Y-ng-sB3" eventType="touchUpInside" id="dx2-E4-Ygm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d72-T9-MOm" userLabel="Menu Button">
-                                <rect key="frame" x="25" y="98" width="145" height="36.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d72-T9-MOm" userLabel="Menu Button">
+                                <rect key="frame" x="25" y="98" width="180" height="41"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="145" id="Jit-26-lgg"/>
+                                    <constraint firstAttribute="width" constant="180" id="Jit-26-lgg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title=" DéxScanner" image="equal.square.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
                                 </state>
                                 <connections>
                                     <action selector="openDexButtonPressed:" destination="Z2Y-ng-sB3" eventType="touchUpInside" id="R50-Ll-SDT"/>

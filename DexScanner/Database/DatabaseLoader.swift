@@ -23,4 +23,12 @@ class DatabaseLoader {
     func loadPokemon() -> Results<Pokemon> {
         return realm.objects(Pokemon.self).sorted(byKeyPath: "dexNo", ascending: true)
     }
+    
+    static func __delete_previous_database() {
+        do {
+            try FileManager.default.removeItem(at: Realm.Configuration.defaultConfiguration.fileURL!)
+        } catch {
+            print(error)
+        }
+    }
 }
