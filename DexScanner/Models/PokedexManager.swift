@@ -11,7 +11,7 @@ import Foundation
 class PokedexManager: ObservableObject {
     @Published var pokemon = [PokemonModel]()
 
-    let db = DatabaseLoader()
+    private let db = DatabaseLoader()
     
     func load() {
         var pokemonModels: [PokemonModel] = []
@@ -20,7 +20,7 @@ class PokedexManager: ObservableObject {
         for pokemonSpecies in pokemonLists {
             // Convert from Realm List to Swift Array, so that we can pass it to the pokemonModels
             let pokemonTypes: [PokemonType] = Array(pokemonSpecies.types)
-            
+
             let model = PokemonModel(pokemonSpecies.dexNo, pokemonSpecies.name, pokemonTypes, pokemonSpecies.dexEntry)
             pokemonModels.append(model)
         }

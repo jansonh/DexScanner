@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 
 struct Speaker {
-    static let speechSynthesizer = AVSpeechSynthesizer()
+    static private let speechSynthesizer = AVSpeechSynthesizer()
     
     static var isSpeaking: Bool {
         return speechSynthesizer.isSpeaking

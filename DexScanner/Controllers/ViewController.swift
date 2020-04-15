@@ -15,16 +15,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var imagePreview: UIView!
     
     let cameraManager: CameraManager = CameraManager()
-    
-    var image: UIImage?
-    var vSpinner : UIView?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Ask user permission to use camera. If the permission is not granted,
-        // the app cannot take picture from camera, but the offline Pokédex should
-        // still work perfectly.
+
+        // Ask the user for camera permission.
         cameraManager.askUserForCameraPermission({ permissionGranted in
             if permissionGranted {
                 // Permission is granted, so use the imagePreview layer as the camera view.
@@ -32,28 +27,7 @@ class ViewController: UIViewController {
             } else {
                 // Show alerts informing that the user can open Settings to manually
                 // allow camera access permission.
-                let alert = UIAlertController(
-                    title: "Permission denied",
-                    message: "Camera access denied. Manually change the permission from your Settings.",
-                    preferredStyle: .alert)
-                
-                // This action will open the Settings menu so the user hopefully enable the permission there.
-                let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
-                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
-                    if UIApplication.shared.canOpenURL(settingsUrl) {
-                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                            self.connectCameraToView()
-                        })
-                    }
-                }
-                alert.addAction(settingsAction)
-                
-                // And add the cancel action for the alert
-                let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-                alert.addAction(cancelAction)
-                
-                // Show the alert
-                self.present(alert, animated: true)
+                self.showCameraAccessErrorAlert()
             }
         })
     }
@@ -74,35 +48,20 @@ class ViewController: UIViewController {
         cameraManager.stopCaptureSession()
     }
 
+    // MARK: - Button Pressed Functions
+
     @IBAction func shootButtonPressed(_ sender: UIButton) {
         cameraManager.capturePictureWithCompletion({ result in
             switch result {
                 case .success(let content):
-                    // Save the captured picture to `image` variable.
-                    self.image = content.asImage;
-                    
-                    // Show loading spinner.
-                    self.showSpinner(onView: self.view)
-                    
-                    // TODO: Pokémon classification
-                    
-                    // TODO: Delete this for deployment
-                    Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
-                        self.removeSpinner()
-                    }
+                    self.doClassification(content)
                 
                 case .failure:
-                    // Something fails. Show the error alert.
-                    let alert = UIAlertController(
-                        title: "Error",
-                        message: "Camera manager failure occurs. The app cannot capture the picture.",
-                        preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true)
+                    self.showCameraCaptureErrorAlert()
             }
         })
     }
-    
+
     @IBAction func openDexButtonPressed(_ sender: UIButton) {
         // Navigate to SwiftUI view by setting the rootView of a UIHostingController
         let pokedexView = PokedexView()
@@ -114,8 +73,10 @@ class ViewController: UIViewController {
         let hostVC = UIHostingController(rootView: pokedexView)
         navigationController?.pushViewController(hostVC, animated: true)
     }
-    
-    func connectCameraToView() {
+
+    // MARK: - Main Functions
+
+    private func connectCameraToView() {
         if cameraManager.currentCameraStatus() == .ready {
             // Don't want to save the camera picture directly to Photos library
             cameraManager.writeFilesToPhoneLibrary = false
@@ -131,30 +92,59 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    // Show spinner when processing the image!
-    func showSpinner(onView: UIView) {
-        let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        
-        let ai = UIActivityIndicatorView.init(style: .large)
-        ai.startAnimating()
-        ai.center = spinnerView.center
-        
+
+    private func doClassification(_ content: CaptureContent) {
+        // Show loading spinner.
+        var spinner = Spinner()
+        spinner.showSpinner(onView: self.view)
+
+        // Save the captured picture to `image` variable.
+        let image = content.asImage;
+
+        // TODO: Pokémon classification
+        let classificationModel = PokemonMLModel()
         DispatchQueue.main.async {
-            spinnerView.addSubview(ai)
-            onView.addSubview(spinnerView)
+            classificationModel.updateClassifications(for: image!)
+            print(classificationModel.classificationLabel ?? "NIL")
+
+            spinner.removeSpinner()
         }
-        
-        vSpinner = spinnerView
     }
-    
-    // When processing is done, remove the spinner.
-    func removeSpinner() {
-        DispatchQueue.main.async {
-            self.vSpinner?.removeFromSuperview()
-            self.vSpinner = nil
+
+    // MARK: - Error Alert Functions
+
+    private func showCameraAccessErrorAlert() {
+        let alert = UIAlertController(
+            title: "Permission denied",
+            message: "Camera access denied. Open Settings to give access to camera.",
+            preferredStyle: .alert)
+
+        // This action will open the Settings menu so the user hopefully enable the permission there.
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    self.connectCameraToView()
+                })
+            }
         }
+        alert.addAction(settingsAction)
+
+        // And add the cancel action for the alert
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(cancelAction)
+
+        // Show the alert
+        self.present(alert, animated: true)
+    }
+
+    private func showCameraCaptureErrorAlert() {
+        let alert = UIAlertController(
+            title: "Error",
+            message: "Camera failure.",
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        self.present(alert, animated: true)
     }
 }
-
